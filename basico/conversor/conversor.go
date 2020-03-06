@@ -20,6 +20,15 @@ func main() {
 		var unidadeDestino string
 		if unidadeOrigem == "celsius" {
 			unidadeDestino = "fahrenheit"
+			for index, value := range valoresOrigem {
+				valorOrigem, err := strconv.ParseFloat(value, 64)
+				if err != nil {
+					fmt.Println("Um erro ocorreu ao converter um dos valores de entrada")
+				} else {
+					fmt.Printf("%d, %.2f celsius = %.2f fahrenheit \n", index, valorOrigem, valorOrigem*1.8+32)
+				}
+			}
+
 		} else if unidadeOrigem == "quilometros" {
 			unidadeDestino = "milhas"
 			for index, value := range valoresOrigem {
@@ -27,14 +36,15 @@ func main() {
 				if err != nil {
 					fmt.Println("Um erro ocorreu ao converter um dos valores de entrada")
 				} else {
-					fmt.Println(index, valorOrigem)
+					fmt.Printf("%d, %.2f quilometros = %.2f milhas \n", index, valorOrigem, valorOrigem*0.621)
 				}
 			}
 		} else {
 			fmt.Printf("%s nao é uma unidade conhecida", unidadeDestino)
 			os.Exit(1)
 		}
-		fmt.Printf("Unidade Origem : %s \n", unidadeOrigem)
+		fmt.Printf("Unidade Origem  : %s \n", unidadeOrigem)
+		fmt.Printf("Unidade Destino : %s \n", unidadeDestino)
 
 	}
 }
