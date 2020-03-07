@@ -9,6 +9,13 @@ type Pilha struct {
 	valores []interface{}
 }
 
+type Arquivo struct {
+	nome     string
+	path     string
+	extensao string
+	linhas   int
+}
+
 func (p Pilha) Tamanho() int {
 	return len(p.valores)
 }
@@ -48,4 +55,7 @@ func main() {
 	pilha.Empilhar("Go3")
 	pilha.Empilhar("Go4")
 	pilha.Mostrar()
+
+	file := Arquivo{nome: "teste", path: "/src/bin"}
+	fmt.Println(file)
 }
