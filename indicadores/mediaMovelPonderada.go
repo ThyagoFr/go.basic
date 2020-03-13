@@ -13,10 +13,18 @@ func main() {
 	periodoInt,_ := strconv.Atoi(periodo)
 	pesos := os.Args[2:]
 	pesosFloat := []float64{}
+	ultimosPesos := 0.0
+	primeirosPesos := 0.0
 
 	somaPesos := 0.0
-	for _,value := range pesos {
+	for index,value := range pesos {
 		v,_ := strconv.ParseFloat(value,64)
+		if index != periodoInt-1 {
+			primeirosPesos += v
+		}
+		if index != 0 {
+			ultimosPesos += v
+		}
 		somaPesos += v
 		pesosFloat = append(pesosFloat,v)
 	}
